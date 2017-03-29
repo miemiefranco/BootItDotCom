@@ -9,9 +9,10 @@ using BookItDotCom.Data.Entities;
 namespace BookItDotCom.Data.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    partial class HotelContextModelSnapshot : ModelSnapshot
+    [Migration("20170329100710_AddedRoom")]
+    partial class AddedRoom
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -39,20 +40,6 @@ namespace BookItDotCom.Data.Migrations
                     b.HasKey("AddresId");
 
                     b.ToTable("Addresses");
-                });
-
-            modelBuilder.Entity("BookItDotCom.Data.Entities.BookedRoomReference", b =>
-                {
-                    b.Property<int>("BookedRoomReferenceId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateFrom");
-
-                    b.Property<DateTime>("DateTo");
-
-                    b.HasKey("BookedRoomReferenceId");
-
-                    b.ToTable("BookedRoomReference");
                 });
 
             modelBuilder.Entity("BookItDotCom.Data.Entities.Hotel", b =>
@@ -97,26 +84,17 @@ namespace BookItDotCom.Data.Migrations
                     b.Property<int>("RoomId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("BookedRoomRefId");
-
                     b.Property<string>("Floor");
 
                     b.Property<int>("HotelOutletRefId");
-
-                    b.Property<bool>("IsOccupied");
 
                     b.Property<decimal>("Price");
 
                     b.Property<string>("RoomNumber");
 
-                    b.Property<int?>("RoomRefId");
-
                     b.Property<int>("RoomType");
 
                     b.HasKey("RoomId");
-
-                    b.HasIndex("BookedRoomRefId")
-                        .IsUnique();
 
                     b.HasIndex("HotelOutletRefId");
 
@@ -295,10 +273,6 @@ namespace BookItDotCom.Data.Migrations
 
             modelBuilder.Entity("BookItDotCom.Data.Entities.Room", b =>
                 {
-                    b.HasOne("BookItDotCom.Data.Entities.BookedRoomReference", "BookedRoomReference")
-                        .WithOne("Room")
-                        .HasForeignKey("BookItDotCom.Data.Entities.Room", "BookedRoomRefId");
-
                     b.HasOne("BookItDotCom.Data.Entities.HotelOutlet", "HotelOutlet")
                         .WithMany("Rooms")
                         .HasForeignKey("HotelOutletRefId")

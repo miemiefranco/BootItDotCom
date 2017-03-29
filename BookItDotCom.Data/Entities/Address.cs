@@ -15,7 +15,7 @@ namespace BookItDotCom.Data.Entities
         public String PostCode { get; set; }
         public String Town { get; set; }
         public String State { get; set; }
-        public String Country { get; set; }       
+        public String Country { get; set; } 
         public HotelOutlet HotelOutlet { get; set; }
     }
 }

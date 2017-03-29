@@ -9,6 +9,7 @@ namespace BookItDotCom.Data.Entities
     {
         public HotelOutlet()
         {
+            Rooms = new List<Room>();
         }
 
         public int HotelOutletId { get; set; }
@@ -17,10 +18,12 @@ namespace BookItDotCom.Data.Entities
         public int HotelId { get; set; }
         [ForeignKey("HotelId")]
         public virtual Hotel Hotel { get; set; }
-        public int AddressRef { get; set; }
 
+        public int AddressRef { get; set; }
         [ForeignKey("AddressRef")]
         public  Address Address { get; set; }
+
+        public virtual ICollection<Room> Rooms { get; set; }
 
 
     }
