@@ -1,0 +1,7 @@
+C:\Code\BookItDotCom\BookItDotCom.Data\bin\Debug\netcoreapp1.1\BookItDotCom.Data.deps.json
+C:\Code\BookItDotCom\BookItDotCom.Data\bin\Debug\netcoreapp1.1\BookItDotCom.Data.dll
+C:\Code\BookItDotCom\BookItDotCom.Data\bin\Debug\netcoreapp1.1\BookItDotCom.Data.pdb
+C:\Code\BookItDotCom\BookItDotCom.Data\obj\Debug\netcoreapp1.1\BookItDotCom.Data.AssemblyInfo.cs
+C:\Code\BookItDotCom\BookItDotCom.Data\obj\Debug\netcoreapp1.1\BookItDotCom.Data.dll
+C:\Code\BookItDotCom\BookItDotCom.Data\obj\Debug\netcoreapp1.1\BookItDotCom.Data.pdb
+C:\Code\BookItDotCom\BookItDotCom.Data\obj\Debug\netcoreapp1.1\BookItDotCom.Data.csprojResolveAssemblyReference.cache
