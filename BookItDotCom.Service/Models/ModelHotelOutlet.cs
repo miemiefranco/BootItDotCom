@@ -8,6 +8,7 @@ namespace BookItDotCom.Service.Models
     public class ModelHotelOutlet
     {
         public string HotelOutletName { get; set; }
-        public int rating { get; set; }
+        public int Rating { get; set; }
+        public ModelAddress Address { get; set; }
     }
 }

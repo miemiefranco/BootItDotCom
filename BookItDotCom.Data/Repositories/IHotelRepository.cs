@@ -7,7 +7,12 @@ namespace BookItDotCom.Data.Repositories
 {
     public interface IHotelRepository
     {
-        IEnumerable<Hotel> GetAll();
-        IEnumerable<Hotel> GetAllIncludeOutlets();
+        IEnumerable<Hotel> GetMainHotelAll();
+        IEnumerable<Hotel> GetMainHotelAllIncludeOutlets();
+
+        IEnumerable<HotelOutlet> GetAllHotel();
+
+        IEnumerable<Room> GetAvailableRooms();
+        IEnumerable<Room> GetAvailableRoomsWithReference();
     }
 }

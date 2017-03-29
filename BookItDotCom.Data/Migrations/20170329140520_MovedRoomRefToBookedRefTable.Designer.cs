@@ -9,9 +9,10 @@ using BookItDotCom.Data.Entities;
 namespace BookItDotCom.Data.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    partial class HotelContextModelSnapshot : ModelSnapshot
+    [Migration("20170329140520_MovedRoomRefToBookedRefTable")]
+    partial class MovedRoomRefToBookedRefTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")

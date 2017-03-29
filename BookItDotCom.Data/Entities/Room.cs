@@ -18,8 +18,6 @@ namespace BookItDotCom.Data.Entities
         [ForeignKey("HotelOutletRefId")]
         public virtual HotelOutlet HotelOutlet { get; set; }
 
-        public int? BookedRoomRefId { get; set; }
-        [ForeignKey("RoomRefId")]
         public BookedRoomReference BookedRoomReference { get; set; }
 
     }

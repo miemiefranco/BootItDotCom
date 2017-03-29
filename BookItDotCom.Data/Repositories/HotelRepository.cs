@@ -16,14 +16,29 @@ namespace BookItDotCom.Data.Repositories
             _context = context;
         }
 
-        public IEnumerable<Hotel> GetAll()
+        public IEnumerable<Hotel> GetMainHotelAll()
         {
             return _context.Hotels.ToList();
         }
 
-        public IEnumerable<Hotel> GetAllIncludeOutlets()
+        public IEnumerable<Hotel> GetMainHotelAllIncludeOutlets()
         {
             return _context.Hotels.Include(h => h.Outlets).ToList();
+        }
+
+        public IEnumerable<Room> GetAvailableRooms()
+        {
+           return _context.Rooms.Where(r => r.IsOccupied == false).ToList();
+        }
+
+        public IEnumerable<Room> GetAvailableRoomsWithReference()
+        {
+            return _context.Rooms.Where(r => r.IsOccupied == false).Include(rf => rf.BookedRoomReference).ToList();
+        }
+
+        public IEnumerable<HotelOutlet> GetAllHotel()
+        {
+            return _context.HotelOutlets.Include(h => h.Address).ToList();
         }
     }
 }

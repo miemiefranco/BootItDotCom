@@ -17,6 +17,8 @@ namespace BookItDotCom.Data
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelOutlet> HotelOutlets { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<BookedRoomReference> BookedRoomReferences { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -25,10 +27,10 @@ namespace BookItDotCom.Data
            .WithOne(i => i.Address)
            .HasForeignKey<HotelOutlet>(a => a.AddressRef);
 
-            builder.Entity<BookedRoomReference>()
-                .HasOne(p => p.Room)
-                .WithOne(i => i.BookedRoomReference)
-                .HasForeignKey<Room>(a => a.BookedRoomRefId);
+            builder.Entity<Room>()
+                .HasOne(p => p.BookedRoomReference)
+                .WithOne(i => i.Room)
+                .HasForeignKey<BookedRoomReference>(a => a.RoomRefId);
 
             base.OnModelCreating(builder);
         }

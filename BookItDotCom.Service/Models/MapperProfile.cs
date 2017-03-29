@@ -19,6 +19,8 @@ namespace BookItDotCom.Service.Models
         {
             CreateMap<Hotel, ModelHotel>();
             CreateMap<HotelOutlet, ModelHotelOutlet>();
+            CreateMap<Address, ModelAddress>();
+            CreateMap<Room, ModelRoom>();
         }
     }
 }
