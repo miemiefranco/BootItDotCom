@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using BookItDotCom.Data.Entities;
+using BookItDotCom.Data.Helpers;
+using BookItDotCom.Service.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,12 @@ namespace BookItDotCom.Service.Models
             CreateMap<Hotel, ModelHotel>();
             CreateMap<HotelOutlet, ModelHotelOutlet>();
             CreateMap<Address, ModelAddress>();
-            CreateMap<Room, ModelRoom>();
+            CreateMap<Room, ModelRoom>()
+                .ForMember(r=>r.HotelOutletID, mr=>mr.MapFrom(m=>m.HotelOutletRefId));
+            CreateMap<BookedRoomReference, ModelBookedRoomReference>();
+            CreateMap<BookingResourceParameters, BookingResourceParametersDB>();
+            CreateMap<Room, RoomDto>();
+            CreateMap<HotelOutlet,HotelDto>();
         }
     }
 }

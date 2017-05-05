@@ -27,10 +27,10 @@ namespace BookItDotCom.Data
            .WithOne(i => i.Address)
            .HasForeignKey<HotelOutlet>(a => a.AddressRef);
 
-            builder.Entity<Room>()
-                .HasOne(p => p.BookedRoomReference)
-                .WithOne(i => i.Room)
-                .HasForeignKey<BookedRoomReference>(a => a.RoomRefId);
+            //builder.Entity<Room>()
+            //    .HasOne(p => p.BookedRoomReference)
+            //    .WithOne(i => i.Room)
+            //    .HasForeignKey<BookedRoomReference>(a => a.RoomRefId);
 
             base.OnModelCreating(builder);
         }

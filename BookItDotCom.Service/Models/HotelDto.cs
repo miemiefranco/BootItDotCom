@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace BookItDotCom.Service.Models
 {
-    public class ModelHotelOutlet
+    public class HotelDto
     {
         public string HotelOutletName { get; set; }
-        public int Rating { get; set; }
+        public int Rating { get; set; }       
         public ModelAddress Address { get; set; }
-        public List<ModelRoom> Rooms { get; set; }
+        public List<RoomDto> Rooms { get; set; }
     }
 }

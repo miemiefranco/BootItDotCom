@@ -13,7 +13,7 @@ namespace BookItDotCom.Data.Entities
 
         public int? RoomRefId { get; set; }
         [ForeignKey("RoomRefId")]
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
 
     }
 }

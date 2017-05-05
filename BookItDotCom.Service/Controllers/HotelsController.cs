@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using BookItDotCom.Data.Helpers;
 using BookItDotCom.Data.Repositories;
+using BookItDotCom.Service.Helpers;
 using BookItDotCom.Service.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -32,7 +34,7 @@ namespace BookItDotCom.Service.Controllers
 
 
        //GET api/hotels/all
-       [HttpGet("all")]
+        [HttpGet("all")]
         public IActionResult Get()
         {
             var hotels = _hotelRepo.GetAllHotel();
@@ -41,11 +43,16 @@ namespace BookItDotCom.Service.Controllers
 
         //GET api/hotels/all-available-rooms
         [HttpGet("all-available-rooms")]
-        public IActionResult GetRooms()
+        public IActionResult GetRooms(BookingResourceParameters bookingResourceParameters)
         {
-            var rooms = _hotelRepo.GetAvailableRooms();
-            return Ok(_mapper.Map<IEnumerable<ModelRoom>>(rooms));
+            var resourceParamDB = _mapper.Map<BookingResourceParametersDB>(bookingResourceParameters);
+
+            //var rooms = _hotelRepo.GetAvailableRoomsWithHotelAndReference(resourceParamDB);
+            var hotels = _hotelRepo.GetRoomsWithResourceParameeters(resourceParamDB);
+            var hotelDto = _mapper.Map<IEnumerable<HotelDto>>(hotels);
+            return Ok(_mapper.Map<IEnumerable<HotelDto>>(hotels));
         }
+
 
     }
 }
