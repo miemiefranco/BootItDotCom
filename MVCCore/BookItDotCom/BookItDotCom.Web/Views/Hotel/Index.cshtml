@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BookItDotCom.Web.ViewModels.HotelViewModel>
+
+
+
+@{ 
+  
+}
+<div class="container">
+    <div class="panel panel-default">
+        <h1 class="panel-heading">Hote List</h1>
+        <div class="panel-body">
+            <div class="list-group">
+                @foreach (var m in Model)
+                {
+                    <a  href="#" class="list-group-item">
+                        <div class="col-md-4">
+                            <h3>@m.HotelName</h3>
+                        </div>
+                        <div class="col-md-8">
+               
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+  
+</div>

@@ -1,0 +1,21 @@
+﻿@model BookItDotCom.Web.Components.SearchCriteria
+
+@using (Html.BeginForm("Result", "Booking", FormMethod.Post))
+{
+    <div class="row">
+        <div class="form-group">
+
+            @Html.LabelFor(x => x.FromDate, "From Date:")
+            @Html.TextBoxFor(x => x.FromDate)
+        </div>
+    </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(x => x.ToDate, "To Date:")
+                @Html.TextBoxFor(x => x.ToDate)
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" class="btn btn-primary" />
+        </div>
+}
