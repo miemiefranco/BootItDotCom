@@ -1,0 +1,99 @@
+﻿@model BookItDotCom.Web.ViewModels.BookingResourceParameters
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="hero-container">
+    <div class="hero-headline-text-container float-left col-sm-12">
+        <div class="hero-headline-text">
+            <p>Book with us and save</p>
+            <h2>Money back!</h2>
+        </div>
+    </div>
+    <div class="container form-container float-right col-sm-12">
+        <div class="form-content">
+            <form asp-controller="Booking" asp-action="SearchResult" method="post">
+                <div class="form-control-container">
+                    <div>
+                        <h2>Search Hotels</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input asp-for="Location" class="text-box-control" placeholder="e.g., location" />
+                        </div>
+                    </div>
+                    <div class="empty-row"></div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input asp-for="CheckIn" class="datetimepicker text-box-control" placeholder="Check In" />
+                        </div>
+                        @*<div class="col-sm-2"></div>*@
+                        <div class="col-sm-6">
+                            <input asp-for="CheckOut" class="datetimepicker text-box-control" placeholder="Check Out" />
+                        </div>
+                    </div>
+                    <div class="empty-row"></div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label asp-for="Room" class="col-sm-5 form-control-label">
+                                Rooms:
+                            </label>
+                            <select asp-for="Room" class="select-control small col-sm-6">
+                                @for (int i = 0; i < 20; i++)
+                            {
+                                var room = i + 1;
+                                    <option value=@room>@room</option>
+                            }
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label asp-for="NumberOfAdults" class="col-sm-5 form-control-label">
+                                Adults:
+                            </label>
+                            <select asp-for="NumberOfAdults" class="select-control small col-sm-6">
+                                @for (int i = 0; i < 20; i++)
+                            {
+                                var adults = i + 1;
+                                    <option value=@adults>@adults</option>
+                            }
+                            </select>
+                        </div>
+                        <div class="col-sm-5">
+                            <label asp-for="NumberOfChild" class="col-sm-3 form-control-label">
+                                Children:
+                            </label>
+                            <select asp-for="NumberOfChild" class="select-control medium col-md-7">
+                                <option>No childern</option>
+                                @for (int i = 0; i < 20; i++)
+                            {
+                                var child = i + 1;
+                                    <option value=@child>@child</option>
+                            }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row col-sm-12">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="content-container">
+        
+        
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.datetimepicker').datetimepicker({
+            timepicker: false,
+            format: 'd/m/Y'
+        });
+    });
+</script>

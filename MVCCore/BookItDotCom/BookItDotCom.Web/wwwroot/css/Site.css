@@ -1,6 +1,20 @@
 ﻿body {
-    padding-top: 50px;
+    font-family:Helvetica,Arial, sans-serif;
     padding-bottom: 20px;
+    color: #5a5a5a;
+}
+
+.float-left{
+    float:left;
+}
+
+.float-right{
+    float:right;
+}
+
+.content-container {
+    max-width: 1110px;
+    margin:0 auto;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -9,12 +23,76 @@
     padding-right: 15px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+.header {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
+/*header logo top*/
+.logo-container {
+    padding-left: 40px;
+}
+
+    .logo-container img {
+        width: 30px;
+        padding-top: 0;
+        margin-top: -7px;
+    }
+
+
+    .logo-container span {
+        color: #E76F25;
+        font-size:1.5em;
+        font-weight:bold;
+        padding-left:10px;
+    }
+
+/** nav bar styles override */
+.navbar {
+    border: none;
+    border-radius: 0px;
+}
+
+.navbar-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-orange
+{
+    background-color: #E76F25;
+    margin-bottom:0;
+}
+
+.navbar-nav {
+    width: 100%;
+    /*text-align:center;*/
+}
+
+
+.navbar-nav > li {
+    float: none;
+    display: inline-block;
+    text-align: center;
+}
+
+    .navbar-nav > li a
+    {
+        color:#fff;
+    }
+
+        .navbar-nav > li a:hover {
+            background-color: #fff;
+            color: #E76F25;
+        }
+
+        /* Set width on the form input elements since they're 100% wide by default */
+        input,
+        select,
+        textarea {
+            padding-left: 10px;
+            min-height: 40px;
+            color: #5a5a5a;
+        }
 
 /* styles for validation helpers */
 .field-validation-error {
@@ -40,4 +118,108 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.form-container {
+    max-width: 500px;
+    background: rgba(38,38,38, 0.9);
+    /*background: #5a5a5a;*/
+    width: 40%;
+    /*filter: alpha(opacity=30);
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=30);
+    -moz-opacity: 0.30;
+    opacity: 0.3;
+    zoom: 1;*/
+    padding: 15px;
+    margin-left: 0;
+}
+
+.form-container h2{
+    color: #fff;
+}
+
+.form-control-container
+{
+    padding:10px 0;
+}
+
+.text-box-control
+{
+    width:100%  !important;
+}
+
+.empty-row
+{
+   min-height:10px;
+}
+
+.form-control-label {
+    color: #fff;
+    padding-left: 0px;
+}
+
+.top-buffer {
+    margin-top: 20px;
+}
+
+.select-control
+{
+    min-height:20px;
+}
+
+.select-control.small{
+    width:60px;
+}
+
+.select-control.medium {
+    width: 140px;
+}
+
+/*.container-fluid::before {
+    content: none !important;
+}
+
+.nav.navbar-nav::before, .navbar.navbar-orange::before,
+.collapse.navbar-collapse.navbar-center::before {
+    content: none !important;
+}*/
+
+.hero-container{
+    background-image: url('../img/coastal-city-sea-dreaming-summer-photography-town-blue-sky-wallpaper.jpg');
+    background-repeat:no-repeat;
+    background-size:cover;
+    min-height:764px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-headline-text-container {
+    background: rgba(255,255,255, 0.5);
+    width: 60%;
+    min-height: 290px;
+    margin: 0;
+    display:flex;
+    align-items:center;
+}
+
+.hero-headline-text-container .hero-headline-text {
+    margin: 0;
+    width:100%;
+}
+
+
+.hero-headline-text-container p {
+
+    text-align: center;
+    color: #333;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+    .hero-headline-text-container h2 {
+        text-align: center;
+        color: #E76F25;
+        font-size: 3em;
+        font-weight: 500;
+    }
 

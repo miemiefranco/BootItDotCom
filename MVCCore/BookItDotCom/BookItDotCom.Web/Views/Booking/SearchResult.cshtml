@@ -1,0 +1,16 @@
+@model IEnumerable<BookItDotCom.Web.ViewModels.OutletViewModel>
+@{
+    ViewData["Title"] = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="content-container">
+        @foreach(var hotel in Model)
+        {
+            <h1>@hotel.HotelOutletName</h1>
+        }
+    </div>
+</div>
+
+
