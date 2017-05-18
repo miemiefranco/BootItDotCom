@@ -1,0 +1,19 @@
+@model SearchResultViewModel
+
+<div class="search-result col-md-8">
+    @foreach (var hotel in Model.hotels)
+    {
+        <div class="search-item">
+            <div class="hotel-search-preview col-md-4">
+                <img src="~/img/superior-room.jpeg" />
+            </div>
+            <div class="hotel-search-preview col-md-8">
+                <h3>@hotel.HotelOutletName</h3>
+                <div class="district-location">
+                    <span>@hotel.Address.State, @hotel.Address.Town</span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    }
+</div>

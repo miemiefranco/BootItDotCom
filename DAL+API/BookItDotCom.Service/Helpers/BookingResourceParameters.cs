@@ -9,6 +9,6 @@ namespace BookItDotCom.Service.Helpers
     {
         public DateTime CheckIn { get; set; }
         public DateTime CheckOut { get; set; }
-        public decimal? Rating { get; set; }
+        public string Rating { get; set; }
     }
 }

@@ -66,32 +66,38 @@ namespace BookItDotCom.Data.Repositories
               
             }
 
-            if(bookingResourceParametersDB.Rating != null)
+            if (bookingResourceParametersDB.Rating.Count() > 0)
             {
-                //filter by rating
-                var roomsToRemoveFromRatingFilter = new List<Room>();
 
-                foreach(var r in rooms)
-                {
-                    var rating = _context.HotelOutlets.Where(h => h.HotelOutletId == r.HotelOutletRefId)
-                        .FirstOrDefault().Rating;
-
-                    if(rating != bookingResourceParametersDB.Rating)
-                    {
-                        roomsToRemoveFromRatingFilter.Add(r);
-                    }
-
-                }
-
-                if(roomsToRemoveFromRatingFilter.Count() > 0)
-                {
-                    foreach (var rToRemove in roomsToRemoveFromRatingFilter)
-                    {
-                        rooms.RemoveAll(item => item.RoomId == rToRemove.RoomId);
-                    }
-                }
-               
             }
+
+
+            //if (bookingResourceParametersDB.Rating != null)
+            //{
+            //    //filter by rating
+            //    var roomsToRemoveFromRatingFilter = new List<Room>();
+
+            //    foreach(var r in rooms)
+            //    {
+            //        var rating = _context.HotelOutlets.Where(h => h.HotelOutletId == r.HotelOutletRefId)
+            //            .FirstOrDefault().Rating;
+
+            //        if(rating != bookingResourceParametersDB.Rating)
+            //        {
+            //            roomsToRemoveFromRatingFilter.Add(r);
+            //        }
+
+            //    }
+
+            //    if(roomsToRemoveFromRatingFilter.Count() > 0)
+            //    {
+            //        foreach (var rToRemove in roomsToRemoveFromRatingFilter)
+            //        {
+            //            rooms.RemoveAll(item => item.RoomId == rToRemove.RoomId);
+            //        }
+            //    }
+               
+            //}
 
             return rooms;
         }
@@ -135,7 +141,21 @@ namespace BookItDotCom.Data.Repositories
                 }
             }
 
-                return hotels.ToList();
+            if (!String.IsNullOrEmpty(bookingResourceParametersDB.Rating))
+            {
+                List<string> ratingString = bookingResourceParametersDB.Rating.Split('|').ToList();
+                if(ratingString.Count > 0)
+                {
+                    var hotelsFilteredByRatings = hotels.Where(item => (ratingString.Contains(item.Rating.ToString())))
+                         .Include(h => h.Address)
+                         .Include(h => h.Rooms); 
+
+                    hotels = hotelsFilteredByRatings;
+                }
+            }
+
+
+            return hotels.ToList();
         }
 
         public IEnumerable<HotelOutlet> GetAllHotel()

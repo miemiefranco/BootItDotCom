@@ -1,16 +1,129 @@
-@model IEnumerable<BookItDotCom.Web.ViewModels.OutletViewModel>
+@model SearchResultViewModel
 @{
     ViewData["Title"] = "SearchResult";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="search-bar-top">
+
+</div>
 <div class="container-fluid">
     <div class="content-container">
-        @foreach(var hotel in Model)
-        {
-            <h1>@hotel.HotelOutletName</h1>
-        }
+        <div class="content">
+            <div class="advanced-filter col-md-4">
+                <div class="advanced-filter-heading">
+                    <h3>Filter Properties</h3>
+                </div>
+                <div class="advanced-filter-items-container">
+                    <div class="advanced-filter-item">
+                        <h4 class="orange">
+                            Star Rating
+                        </h4>
+                        <div class="stars-container">
+                            <div class="star-item">
+                                <div class="stars-control">
+                                 
+                                    <input type="checkbox" name="SelectedStarRating" value="5" />
+                                </div>
+                                    <div class="stars-label">
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="star"></div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="star-item">
+                                <div class="stars-control">
+                                    <input type="checkbox" name="SelectedStarRating" value="4" />
+                                </div>
+                                <div class="stars-label">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="star-item">
+                                <div class="stars-control">
+                                    <input type="checkbox" name="SelectedStarRating" value="3" />
+                                </div>
+                                <div class="stars-label">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="star-item">
+                                <div class="stars-control">
+                                    <input type="checkbox" name="SelectedStarRating" value="2" />
+                                </div>
+                                <div class="stars-label">
+                                    <div class="star"></div>
+                                    <div class="star"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="star-item">
+                                <div class="stars-control">
+                                    <input type="checkbox" name="SelectedStarRating" value="1" />
+                                </div>
+                                <div class="stars-label">
+                                    <div class="star"></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_SearchResultHotelList")
+
+        </div>
     </div>
 </div>
 
+@section scripts{
+    <script type="text/javascript">
+
+        (function ($) {
+            var filterURL = '';
+            $('input[name="SelectedStarRating"]').change(function () {
+                var filteredStarsURL = 'SelectedStarRatingString=';
+                var selectedRatingsArray = [];
+                $("input:checkbox[name=SelectedStarRating]:checked").each(function () {
+                    selectedRatingsArray.push($(this).val());
+                })
+                filteredStarsURL += selectedRatingsArray.toString();
+
+                if ($(this).prop('checked')) {
+                    filterURL += '?' + filteredStarsURL;
+                    //bookingResourceParameters['StarRating'] = parseInt($(this).val());
+                    $.ajax({
+                        url: '/Booking/UpdateSearchResult' + filterURL,
+                        type: 'Get',
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (result) {
+                            debugger
+                            var results = result;
+                        },
+                        error: function (xhr, error) {
+
+                        }
+                    });
+                }
+            });
+
+          
+        })(jQuery);
+    </script>
+}
 

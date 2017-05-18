@@ -12,16 +12,9 @@ namespace BookItDotCom.Web.Controllers
 {
     public class HomeController : Controller
     {
-        HttpClient client;
-        string url = "http://localhost:62882/api/hotels/all-available-rooms" +
-            "";
 
         public HomeController()
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri(url);
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         // GET: /<controller>/
